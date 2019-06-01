@@ -13,30 +13,31 @@ describe('BST test suit', () => {
       bst = new BST();
     });
     it('it should add unique items', () => {
-      for (let i = 1; i < 10; i += 1) {
-        it(`size of the tree should be ${i}`, () => {
-          bst.add(i);
-          expect(bst.getSize()).to.be.equal(i);
-        });
+      for (let i = 0; i < 10; i += 1) {
+        bst.add(i);
+        expect(bst.getSize()).to.be.equal(i + 1);
       }
     });
     it('it should add dublicate items', () => {
       for (let i = 1; i < 10; i += 1) {
-        it(`size of the tree should be ${i}`, () => {
-          bst.add(i % 5);
-          expect(bst.getSize()).to.be.equal(i);
-        });
+        bst.add(i % 5);
+        expect(bst.getSize()).to.be.equal(i);
       }
     });
-  });
-  describe('height balanced test suit', () => {
-    let bst = new BST();
-    for (let i = 1; i < 10; i += 1) {
-      it(`height between left and right nodes of the tree should be below 2. i.e. 0 or 1`, () => {
+    it('it should balance the height for unique elements', () => {
+      for (let i = 0; i < 10; i += 1) {
         bst.add(i);
         expect(bst.isBalanced()).to.be.equal(true);
-      });
-    }
+      }
+      expect(bst.getSize()).to.be.equal(10);
+    });
+    it('it should balance the height for dublicate elements', () => {
+      for (let i = 0; i < 100; i += 1) {
+        bst.add(i % 10);
+        expect(bst.isBalanced()).to.be.equal(true);
+      }
+      expect(bst.getSize()).to.be.equal(100);
+    });
   });
 
   describe('remove elements test suit', () => {
