@@ -1,7 +1,7 @@
 'use strict';
 const Node = require('../node/node');
 const {
-  resetSize
+  size
 } = require('./utils');
 
 const {
@@ -22,13 +22,12 @@ const add = (tree = undefined, key = null, value = undefined, comparator = undef
   }
   if (!tree) { return new Node({ key, value }); }
   let cmp = comparator(key, tree.key);
+  tree.size = size(tree) + 1;
   if (cmp < 0) {
     tree.left = add(tree.left, key, value, comparator);
   } else {
     tree.right = add(tree.right, key, value, comparator);
   }
-
-  tree = resetSize(tree);
   tree = maintain(tree, key >= tree.key);
   return tree;
 };

@@ -9,11 +9,9 @@ const {
   selectLast
 } = require('./select');
 const {
-  find
-} = require('./find');
-const {
+  find,
   contains
-} = require('./contains');
+} = require('./find');
 const {
   add
 } = require('./add');

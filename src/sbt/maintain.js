@@ -11,38 +11,39 @@ const {
 
 /**
  * @private
- * @param {Node|Undefined} node
+ * @param {Node|Undefined|Object} pnode
  * @param {Boolean} flag
- * @return {Node|undefined}
+ * @return {Node|undefined|Object}
  */
-const maintain = (node = undefined, flag = false) => {
-  if (!node) {
+const maintain = (pnode = undefined, flag = false) => {
+  if (!pnode) {
     return undefined;
   }
-  if (flag) {
-    if (node.right && size(node.right.right) > size(node.left)) {
-      node = rotateLeft(node);
-    } else if (node.right && size(node.right.left) > size(node.left)) {
-      node.right = rotateRight(node.right);
-      node = rotateLeft(node);
+
+  if (!flag) {
+    if (pnode.left && size(pnode.left.left) > size(pnode.right)) {
+      pnode = rotateRight(pnode);
+    } else if (pnode.left && size(pnode.left.right) > size(pnode.right)) {
+      pnode.left = rotateLeft(pnode.left);
+      pnode = rotateRight(pnode);
     } else {
-      return node;
+      return pnode;
     }
   } else {
-    if (node.left && size(node.left.left) > size(node.right)) {
-      node = rotateRight(node);
-    } else if (node.left && size(node.left.right) > size(node.right)) {
-      node.left = rotateLeft(node.left);
-      node = rotateRight(node);
+    if (pnode.right && size(pnode.right.right) > size(pnode.left)) {
+      pnode = rotateLeft(pnode);
+    } else if (pnode.right && size(pnode.right.left) > size(pnode.left)) {
+      pnode.right = rotateRight(pnode.right);
+      pnode = rotateLeft(pnode);
     } else {
-      return node;
+      return pnode;
     }
   }
-  node.left = maintain(node.left, false);
-  node.right = maintain(node.right, true);
-  node = maintain(node, false);
-  node = maintain(node, true);
-  return node;
+  pnode.left = maintain(pnode.left, false);
+  pnode.right = maintain(pnode.right, true);
+  pnode = maintain(pnode, false);
+  pnode = maintain(pnode, true);
+  return pnode;
 };
 
 exports.maintain = maintain;

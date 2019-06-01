@@ -1,37 +1,52 @@
 'use strict';
 const {
+  size
+} = require('./utils');
+
+const {
+  maintain
+} = require('./maintain');
+const {
   selectFirst
 } = require('./select');
 
 /**
  *
  * @private
- * @param {Node|Object|undefined} node
+ * @param {Node|Object|undefined} pnode
  * @param {String|Number|null} key
  * @param {Function} comparator
- * @return {Node|undefined}
+ * @return {Node|Object|undefined}
  */
-const remove = (node = undefined, key = null, comparator = undefined) => {
+const remove = (pnode = undefined, key = null, comparator = undefined) => {
   if (!comparator) {
     throw new Error(`comparator not defined`);
   }
-  if (!node) {
+  if (!pnode) {
     return undefined;
   }
-  let cmp = comparator(key, node.key);
+  let cmp = comparator(key, pnode.key);
   if (cmp < 0) {
-    node.left = remove(node.left, key, comparator);
+    pnode.left = remove(pnode.left, key, comparator);
   } else if (cmp > 0) {
-    node.right = remove(node.right, key, comparator);
+    pnode.right = remove(pnode.right, key, comparator);
   } else {
-    if (!node.right) { node = node.left; } else if (!node.left) { node = node.right; } else {
-      let remove = selectFirst(node.right);
-      node.value = remove.value;
-      node.key = remove.key;
-      remove(node.right, node.key, comparator);
+    if (!pnode.left) {
+      return pnode.right;
+    } else if (!pnode.right) {
+      return pnode.left;
+    } else {
+      let successor = selectFirst(pnode.right);
+      let tempKey = pnode.key;
+      pnode.key = successor.key;
+      pnode.value = successor.value;
+      successor.key = tempKey;
+      pnode.right = remove(pnode.right, tempKey, comparator);
     }
   }
-  return node;
+  pnode = maintain(pnode);
+  pnode.size = size(pnode.left) + size(pnode.right) + 1;
+  return pnode;
 };
 
 exports.remove = remove;

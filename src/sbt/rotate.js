@@ -1,41 +1,41 @@
 'use strict';
 
 const {
-  resetSize
+  size
 } = require('./utils');
 
 /**
  * @public
- * @param {Node|Undefined} node
+ * @param {Node|Undefined} pnode
  * @return {undefined|Node}
  */
-const rotateLeft = (node = undefined) => {
-  if (!node) {
+const rotateLeft = (pnode = undefined) => {
+  if (!pnode) {
     return undefined;
   }
-  let x = node.right;
-  node.right = x.left;
-  x.left = node;
-  node = resetSize(node);
-  x = resetSize(x);
-  return x;
+  let pt = pnode.right;
+  pnode.right = pt.left;
+  pt.left = pnode;
+  pt.size = size(pnode);
+  pnode.size = size(pnode.left) + size(pnode.right) + 1;
+  return pt;
 };
 
 /**
  * @public
- * @param {Node|Undefined} node
+ * @param {Node|Undefined} pnode
  * @return {undefined|Node}
  */
-const rotateRight = (node = undefined) => {
-  if (!node) {
+const rotateRight = (pnode = undefined) => {
+  if (!pnode) {
     return undefined;
   }
-  let x = node.left;
-  node.left = x.right;
-  x.right = node;
-  node = resetSize(node);
-  x = resetSize(x);
-  return x;
+  let pt = pnode.left;
+  pnode.left = pt.right;
+  pt.right = pnode;
+  pt.size = size(pnode);
+  pnode.size = size(pnode.left) + size(pnode.right) + 1;
+  return pt;
 };
 
 exports.rotateLeft = rotateLeft;
