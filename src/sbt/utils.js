@@ -6,6 +6,15 @@ const size = (tree = undefined) => {
   return tree.size || 0;
 };
 
+const height = (node = undefined) => {
+  if (!node) {
+    return 0;
+  }
+  const leftHeight = height(node.left);
+  const rightHeight = height(node.right);
+  return Math.max(leftHeight, rightHeight) + 1;
+};
+
 const resetSize = (node = undefined) => {
   if (!node) {
     return undefined;
@@ -17,5 +26,6 @@ const resetSize = (node = undefined) => {
 const printFn = (n) => n.key;
 
 exports.size = size;
+exports.height = height;
 exports.resetSize = resetSize;
 exports.printFn = printFn;

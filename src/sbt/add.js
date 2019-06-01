@@ -2,35 +2,35 @@
 const Node = require('../node/node');
 const {
   resetSize
-} = require('util');
+} = require('./utils');
 
 const {
   maintain
-} = require('maintain');
+} = require('./maintain');
 
 /**
  * @private
- * @param {Node|Object|undefined} node
+ * @param {Node|Object|undefined} tree
  * @param {String|Number|null} key
  * @param {Object|undefined} value
  * @param {Function} comparator
  * @return {Node|undefined}
  */
-const add = (node = undefined, key = null, value = undefined, comparator = undefined) => {
+const add = (tree = undefined, key = null, value = undefined, comparator = undefined) => {
   if (!comparator) {
     throw new Error(`comparator not defined`);
   }
-  if (!node) { return new Node({ key, value }); }
-  let cmp = comparator(key, node.key);
+  if (!tree) { return new Node({ key, value }); }
+  let cmp = comparator(key, tree.key);
   if (cmp < 0) {
-    node.left = add(node.left, key, value, comparator);
+    tree.left = add(tree.left, key, value, comparator);
   } else {
-    node.right = add(node.right, key, value);
+    tree.right = add(tree.right, key, value, comparator);
   }
 
-  node = resetSize(node);
-  node = maintain(node, key >= node.key);
-  return node;
+  tree = resetSize(tree);
+  tree = maintain(tree, key >= tree.key);
+  return tree;
 };
 
 exports.add = add;

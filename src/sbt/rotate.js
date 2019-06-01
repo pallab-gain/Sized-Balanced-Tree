@@ -2,7 +2,7 @@
 
 const {
   resetSize
-} = require('utils');
+} = require('./utils');
 
 /**
  * @public

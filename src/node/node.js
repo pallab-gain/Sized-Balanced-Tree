@@ -6,14 +6,14 @@
 class Node {
   /**
      *
-     * @param key {Object}
-     * @param value {Object}
+     * @param key {String|Number|null}
+     * @param value {Object|undefined}
      * @param left {Node|undefined}
      * @param right {Node|undefined}
      * @param size {Number}
      */
   constructor ({
-    key = undefined,
+    key = null,
     value = undefined,
     left = undefined,
     right = undefined,

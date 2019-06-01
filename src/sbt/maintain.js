@@ -2,12 +2,12 @@
 
 const {
   size
-} = require('utils');
+} = require('./utils');
 
 const {
   rotateLeft,
   rotateRight
-} = require('rotate');
+} = require('./rotate');
 
 /**
  * @private
@@ -21,7 +21,7 @@ const maintain = (node = undefined, flag = false) => {
   }
   if (flag) {
     if (node.right && size(node.right.right) > size(node.left)) {
-      node = size(node);
+      node = rotateLeft(node);
     } else if (node.right && size(node.right.left) > size(node.left)) {
       node.right = rotateRight(node.right);
       node = rotateLeft(node);

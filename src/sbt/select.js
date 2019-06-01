@@ -2,7 +2,7 @@
 
 const {
   size
-} = require('utils');
+} = require('./utils');
 
 /**
  * Get the nth element

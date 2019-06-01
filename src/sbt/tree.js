@@ -7,25 +7,27 @@ const {
   select,
   selectFirst,
   selectLast
-} = require('select');
+} = require('./select');
 const {
   find
-} = require('find');
+} = require('./find');
 const {
   contains
-} = require('contains');
+} = require('./contains');
 const {
   add
-} = require('add');
+} = require('./add');
 const {
   remove
-} = require('remove');
+} = require('./remove');
 const {
   traverse
-} = require('traverse');
+} = require('./traverse');
 const {
+  size,
+  height,
   printFn
-} = require('utils');
+} = require('./utils');
 
 class SBT {
   constructor (_comparator = comparator) {
@@ -40,8 +42,7 @@ class SBT {
    * @return {Node|Object|undefined} Returns true or false on whether the key is present in the tree
    */
   contains (key = null) {
-    const root = { ...this.root };
-    return contains(root, key, this.comparator);
+    return contains(this.root, key, this.comparator);
   }
   /**
    * @public
@@ -50,8 +51,7 @@ class SBT {
    * @return {undefined|Object} Return element at nth position
    */
   select (at = 0) {
-    const root = { ...this.root };
-    const node = select(root, at);
+    const node = select(this.root, at);
     return node && node.value;
   }
 
@@ -61,8 +61,7 @@ class SBT {
    * @return {Node|Object|undefined} Returns the first object with that matches the key
    */
   find (key = null) {
-    const root = { ...this.root };
-    const node = find(root, key, this.comparator);
+    const node = find(this.root, key, this.comparator);
     return node;
   }
 
@@ -71,9 +70,8 @@ class SBT {
    * @param {String|Number|null} key
    * @param {Node|Undefined} value
    */
-  add (key = undefined, value = undefined) {
-    const root = { ...this.root };
-    this.root = add(root, key, value, this.comparator);
+  add (key = null, value = undefined) {
+    this.root = add(this.root, key, value, this.comparator);
   }
 
   /**
@@ -82,8 +80,7 @@ class SBT {
    * @return {Node|Object|undefined} Returns the first object with that matches the key
    */
   remove (key = null) {
-    const root = { ...this.root };
-    this.root = remove(root, key, this.comparator);
+    this.root = remove(this.root, key, this.comparator);
   }
 
   /**
@@ -91,8 +88,7 @@ class SBT {
    * @return {Node|Object} Return first element in the sorted list
    */
   getMin () {
-    const root = { ...this.root };
-    const firstNode = selectFirst(root);
+    const firstNode = selectFirst(this.root);
     return firstNode && firstNode.value;
   }
 
@@ -101,11 +97,28 @@ class SBT {
    * @return {Node|Object} Return last element in the sorted list
    */
   getMax () {
-    const root = { ...this.root };
-    const lastNode = selectLast(root);
+    const lastNode = selectLast(this.root);
     return lastNode && lastNode.value;
   }
 
+  /**
+   * @public
+   * @return {number} Return total size of the tree
+   */
+  getSize () {
+    return size(this.root);
+  }
+
+  /**
+   * @public
+   * @return {boolean} Returns whether the tree is balanced
+   */
+  isBalanced () {
+    const { left, right } = this.root;
+    const leftNodes = height(left);
+    const rightNodes = height(right);
+    return Math.abs(leftNodes - rightNodes) <= 1;
+  }
   /**
    * @public
    * @param printNode

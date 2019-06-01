@@ -1,7 +1,7 @@
 'use strict';
 const {
   selectFirst
-} = require('select');
+} = require('./select');
 
 /**
  *
