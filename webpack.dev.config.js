@@ -3,6 +3,7 @@ const merge = require('webpack-merge');
 const path = require('path');
 const { name } = require('./package');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const commonConfig = require('./webpack.common.config');
 
 function resolve (dir) {
@@ -24,6 +25,15 @@ module.exports = merge(commonConfig, {
     }),
     new webpack.DefinePlugin({
       __PRODUCTION__: JSON.stringify(false)
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Sized Balanced Tree',
+      filename: resolve('index.html')
     })
-  ]
+  ],
+  devServer: {
+    port: 3000,
+    open: true,
+    disableHostCheck: true
+  }
 });
