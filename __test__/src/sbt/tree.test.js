@@ -124,4 +124,165 @@ describe('BST test suit', () => {
       expect(bst.getSize()).to.be.equal(30 - 5 * 2);
     });
   });
+
+  describe('getMin test suit', () => {
+    let bst = new BST();
+    let elements = [];
+    beforeEach(() => {
+      elements = [];
+      bst = undefined;
+      bst = new BST();
+    });
+    it(`should add 100 random element and find min element from there`, () => {
+      for (let i = 0; i < 100; i += 1) {
+        let cur = Math.round(Math.random() * 1000);
+        elements.push(cur);
+        bst.add(cur, cur);
+      }
+      elements.sort((l, r) => {
+        return l - r;
+      });
+      expect(bst.getMin()).to.be.equal(elements[0]);
+    });
+  });
+
+  describe('getMax test suit', () => {
+    let bst = new BST();
+    let elements = [];
+    beforeEach(() => {
+      elements = [];
+      bst = undefined;
+      bst = new BST();
+    });
+    it(`should add 100 random element and find max element from there`, () => {
+      for (let i = 0; i < 100; i += 1) {
+        let cur = Math.round(Math.random() * 1000);
+        elements.push(cur);
+        bst.add(cur, cur);
+      }
+      elements.sort((l, r) => {
+        return l - r;
+      });
+      expect(bst.getMax()).to.be.equal(elements[elements.length - 1]);
+    });
+  });
+
+  describe('isBalanced test suit', () => {
+    let bst = new BST();
+    let elements = [];
+    beforeEach(() => {
+      bst = undefined;
+      bst = new BST();
+      elements = [];
+    });
+    it(`should add 1000 random element and should be balanced always`, () => {
+      for (let i = 0; i < 10000; i += 1) {
+        let cur = Math.round(Math.random() * 100);
+        elements.push(cur);
+      }
+      for (let item of elements) {
+        bst.add(item);
+      }
+      expect(bst.isBalanced()).to.be.equal(true, elements.length);
+    });
+  });
+
+  describe('getSize test suit', () => {
+    let bst = new BST();
+    let elements = [];
+    beforeEach(() => {
+      bst = undefined;
+      bst = new BST();
+      elements = [];
+    });
+    it(`should be 1000 sized bst tree`, () => {
+      for (let i = 0; i < 10000; i += 1) {
+        let cur = Math.round(Math.random() * 100);
+        elements.push(cur);
+      }
+      for (let item of elements) {
+        bst.add(item);
+      }
+      expect(bst.getSize()).to.be.equal(10000);
+    });
+    it(`should be 0 sized bst tree`, () => {
+      expect(bst.getSize()).to.be.equal(0);
+    });
+  });
+
+  describe('find test suit', () => {
+    let bst = new BST();
+    let elements = [];
+    beforeEach(() => {
+      elements = [];
+      bst = undefined;
+      bst = new BST();
+    });
+    it(`should find all the element that is among 100, and will not be able to find 200`, () => {
+      for (let i = 0; i < 1000; i += 1) {
+        let cur = Math.round(Math.random() * 100);
+        elements.push(cur);
+      }
+      for (let item of elements) {
+        bst.add(item);
+      }
+      for (let item of elements) {
+        // eslint-disable-next-line no-unused-expressions
+        expect(bst.find(item)).to.be.not.undefined;
+      }
+      // eslint-disable-next-line no-unused-expressions
+      expect(bst.find(200)).to.be.undefined;
+    });
+  });
+  describe('contains test suit', () => {
+    let bst = new BST();
+    let elements = [];
+    beforeEach(() => {
+      elements = [];
+      bst = undefined;
+      bst = new BST();
+    });
+    it(`should contain all the element that is among 100, and will not contain 200`, () => {
+      for (let i = 0; i < 1000; i += 1) {
+        let cur = Math.round(Math.random() * 100);
+        elements.push(cur);
+      }
+      for (let item of elements) {
+        bst.add(item);
+      }
+      for (let item of elements) {
+        // eslint-disable-next-line no-unused-expressions
+        expect(bst.contains(item)).to.be.equal(true, item);
+      }
+      // eslint-disable-next-line no-unused-expressions
+      expect(bst.contains(200)).to.be.equal(false, 200);
+    });
+  });
+
+  describe('select test suit', () => {
+    let bst = new BST();
+    let elements = [];
+    beforeEach(() => {
+      elements = [];
+      bst = undefined;
+      bst = new BST();
+    });
+    it(`should be able to get ith positioned element from sorted list`, () => {
+      for (let i = 0; i < 1000; i += 1) {
+        let cur = Math.round(Math.random() * 100);
+        elements.push(cur);
+      }
+      elements.sort((l, r) => {
+        return l - r;
+      });
+
+      for (let item of elements) {
+        bst.add(item, item);
+      }
+      for (let i = 0; i < 1000; i += 1) {
+        // eslint-disable-next-line no-unused-expressions
+        expect(bst.select(i + 1)).to.be.equal(elements[i], elements[i]);
+      }
+    });
+  });
 });

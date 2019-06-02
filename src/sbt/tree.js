@@ -115,7 +115,7 @@ class SBT {
     const { left, right } = this.root;
     const leftNodes = height(left);
     const rightNodes = height(right);
-    return Math.abs(leftNodes - rightNodes) <= 1;
+    return Math.abs(leftNodes - rightNodes) <= 2;
   }
   /**
    * @public
