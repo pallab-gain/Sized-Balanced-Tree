@@ -39,6 +39,18 @@ class SBT {
   }
 
   /**
+   * @public
+   * @return {Node|Object|undefined} { production: string, name: string, version: string }
+   */
+  info () {
+    return {
+      name: this.name,
+      version: __VERSION__,
+      production: __PRODUCTION__
+    };
+  }
+
+  /**
    * @private
    * @param {String|Number|null} key
    * @return {Node|Object|undefined} Returns true or false on whether the key is present in the tree

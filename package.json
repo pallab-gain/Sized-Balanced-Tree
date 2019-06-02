@@ -2,9 +2,10 @@
   "name": "sized-balanced-tree",
   "version": "1.0.0",
   "description": "Sized balanced tree implementation in javascript",
-  "main": "index.js",
+  "main": "./src/sbt/tree.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prod": "webpack --mode production --config webpack.prod.config.js",
+    "dev": "webpack --mode development --config webpack.dev.config.js"
   },
   "repository": {
     "type": "git",
@@ -26,13 +27,22 @@
   },
   "homepage": "https://github.com/pallab-gain/Sized-Balanced-Tree#readme",
   "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "babel-loader": "^8.0.6",
+    "babel-polyfill": "^6.26.0",
     "chai": "^4.2.0",
+    "clean-webpack-plugin": "^3.0.0",
     "eslint": "^5.16.0",
     "eslint-config-standard": "^12.0.0",
+    "eslint-loader": "^2.1.2",
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-node": "^9.0.1",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
-    "mocha": "^6.1.4"
+    "mocha": "^6.1.4",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.5.1",
+    "webpack-merge": "^4.2.1"
   }
 }
