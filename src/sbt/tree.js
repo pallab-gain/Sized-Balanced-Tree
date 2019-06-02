@@ -28,6 +28,10 @@ const {
 } = require('./utils');
 
 class SBT {
+  /**
+   * @public
+   * @param _comparator
+   */
   constructor (_comparator = comparator) {
     this.comparator = _comparator;
     this.name = 'Sized Balanced Tree';
@@ -44,7 +48,7 @@ class SBT {
   }
   /**
    * @public
-   * @param {Node|undefined} root Root of the node
+   * 1 based indexing
    * @param {Number} at Query index
    * @return {undefined|Object} Return element at nth position
    */
