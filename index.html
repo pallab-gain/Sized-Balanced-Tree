@@ -3,9 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <title>Sized Balanced Tree</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+
 </head>
 <body>
 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="display-4 mb-3">Sized Balanced Tree</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <fieldset id="console-log-div" style="margin: 0; padding: 0" class="console-log-div"></fieldset>
+        </div>
+    </div>
+</div>
+
 <script src="/sized-balanced-tree.js" defer type="application/javascript"></script>
+<script src="https://rawgit.com/bahmutov/console-log-div/master/console-log-div.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+<script type="application/javascript">
+  const addTestSuit = () => {
+    let testList = [];
+    testList.push(() => {
+      let sbt = new SBT();
+      for (let i = 0; i < 100; i += 1) {
+        sbt.add(i);
+      }
+      console.log(`it should add unique items. passed = ${sbt.getSize() === 100 ? 'ok' : 'failed'}`);
+    });
+    testList.push(() => {
+      let sbt = new SBT();
+      for (let i = 0; i < 100; i += 1) {
+        sbt.add(i % 5);
+      }
+      console.log(`it should add dublicate items. passed = ${sbt.getSize() === 100 ? 'ok' : 'failed'}`);
+    });
+    testList.push(() => {
+      let sbt = new SBT();
+      for (let i = 0; i < 100; i += 1) {
+        sbt.add(i);
+      }
+      console.log(`it should balance the height for unique elements. passed = ${sbt.isBalanced() === true ? 'ok' : 'failed'}`);
+    });
+    testList.push(() => {
+      let sbt = new SBT();
+      for (let i = 0; i < 100; i += 1) sbt.add(i % 10);
+      console.log(`it should balance the height for dublicate elements. passed = ${sbt.isBalanced() === true ? 'ok' : 'failed'}`);
+    });
+    testList.push(() => {
+      let sbt = new SBT();
+      for (let i = 0; i < 100; i += 1) {
+        sbt.add(i);
+      }
+      for (let i = 0; i < 100; i += 1) {
+        sbt.remove(i);
+      }
+      console.log(`it should add 100 elements, and then remove all of them. passed = ${sbt.getSize() === 0 ? 'ok' : 'failed'}`);
+    });
+    testList.push(() => {
+      let sbt = new SBT();
+      for (let i = 0; i < 10; i += 1) {
+        sbt.add(i);
+      }
+      for (let i = 9; i > 5; i -= 1) {
+        sbt.remove(i);
+      }
+      console.log(`it should add 10 elements, and then remove 4 of them. passed = ${sbt.getSize() === 6 ? 'ok' : 'failed'}`);
+    });
+    testList.push(() => {
+      let sbt = new SBT();
+      for (let i = 0; i < 10; i += 1) {
+        sbt.add(i);
+      }
+      for (let i = 0; i < 4; i += 1) {
+        sbt.remove(8);
+      }
+      console.log(`it should add 10 elements, and then remove 1 item 4 times. passed = ${sbt.getSize() === 9 ? 'ok' : 'failed'}`);
+    });
+    testList.push(() => {
+      let sbt = new SBT();
+      for (let i = 0; i < 10; i += 1) {
+        sbt.add(i % 5);
+      }
+      sbt.remove(20);
+      console.log(`it should add 10 elements and try to remove element that is not present. passed = ${sbt.getSize() === 10 ? 'ok' : 'failed'}`);
+    });
+    testList.push(() => {
+      let sbt = new SBT();
+      for (let i = 0; i < 10; i += 1) {
+        sbt.add(i % 5);
+      }
+      sbt.remove(0);
+      console.log(`it should add 10 elements and try to remove one element. passed = ${sbt.getSize() === 9 ? 'ok' : 'failed'}`);
+    });
+
+    testList.push(() => {
+      let sbt = new SBT();
+      for (let i = 0; i < 10; i += 1) {
+        sbt.add(i % 5);
+      }
+      sbt.remove(0);
+      sbt.remove(1);
+      console.log(`it should add 10 elements and try to remove two element. passed = ${sbt.getSize() === 8 ? 'ok' : 'failed'}`);
+    });
+    testList.push(() => {
+      let sbt = new SBT();
+      for (let i = 0; i < 30; i += 1) {
+        sbt.add(i % 5);
+      }
+      for (let i = 0; i < 5; i += 1) {
+        sbt.remove(i % 5);
+      }
+      console.log(`it should add 30 elements of [0,1,2,3,4], and then remove 1 of [0,1,2,3,4] of them. passed = ${sbt.getSize() === 30 - 5 ? 'ok' : 'failed'}`);
+    });
+    testList.push(() => {
+      let sbt = new SBT();
+      for (let i = 0; i < 30; i += 1) {
+        sbt.add(i % 5);
+      }
+      for (let i = 0; i < 5 * 2; i += 1) {
+        sbt.remove(i % 5);
+      }
+      console.log(`it should add 30 elements of [0,1,2,3,4], and then remove 2 of [0,1,2,3,4] of them. passed = ${sbt.getSize() === 30 - 5 * 2 ? 'ok' : 'failed'}`);
+    });
+    testList.push(() => {
+      let sbt = new SBT();
+      let elements = [];
+      for (let i = 0; i < 100; i += 1) {
+        let cur = Math.round(Math.random() * 1000);
+        elements.push(cur);
+        sbt.add(cur, cur);
+      }
+      elements.sort((l, r) => {
+        return l - r;
+      });
+      console.log(`it should add 100 random element and find min element from there. passed = ${sbt.getMin() === elements[0] ? 'ok' : 'failed'}`);
+    });
+    testList.push(() => {
+      let sbt = new SBT();
+      let elements = [];
+      for (let i = 0; i < 100; i += 1) {
+        let cur = Math.round(Math.random() * 1000);
+        elements.push(cur);
+        sbt.add(cur, cur);
+      }
+      elements.sort((l, r) => {
+        return l - r;
+      });
+      console.log(`it should add 100 random element and find max element from there. passed = ${sbt.getMax() === elements[elements.length - 1] ? 'ok' : 'failed'}`);
+    });
+
+    testList.push(() => {
+      let sbt = new SBT();
+      for (let i = 0; i < 1000; i += 1) {
+        let cur = Math.round(Math.random() * 1000);
+        sbt.add(cur, cur);
+      }
+      console.log(`it should add 1000 random element and should be balanced always. passed = ${sbt.isBalanced() === true ? 'ok' : 'failed'}`);
+    });
+    testList.push(() => {
+      let sbt = new SBT();
+      for (let i = 0; i < 1000; i += 1) {
+        let cur = Math.round(Math.random() * 1000);
+        sbt.add(cur, cur);
+      }
+      console.log(`it should be 1000 sized bst tree. passed = ${sbt.getSize() === 1000 ? 'ok' : 'failed'}`);
+    });
+
+    testList.push(() => {
+      let sbt = new SBT();
+      let elements = [];
+      for (let i = 0; i < 1000; i += 1) {
+        let cur = Math.round(Math.random() * 100);
+        elements.push(cur);
+      }
+      for (let item of elements) sbt.add(item);
+      console.log(`it should find ${elements[5]} the element that is among 1000 elements. passed = ${sbt.find(elements[5]) !== undefined ? 'ok' : 'failed'}`);
+      console.log(`it should find ${elements[20]} the element that is among 1000 elements. passed = ${sbt.find(elements[20]) !== undefined ? 'ok' : 'failed'}`);
+      console.log(`it should find ${elements[100]} the element that is among 1000 elements. passed = ${sbt.find(elements[100]) !== undefined ? 'ok' : 'failed'}`);
+      console.log(`it should not find ${200} the element that is among 1000 elements. passed = ${sbt.find(200) === undefined ? 'ok' : 'failed'}`);
+    });
+
+    testList.push(() => {
+      let sbt = new SBT();
+      let elements = [];
+      for (let i = 0; i < 1000; i += 1) {
+        let cur = Math.round(Math.random() * 100);
+        elements.push(cur);
+      }
+      for (let item of elements) sbt.add(item);
+      console.log(`it should contains ${elements[5]} among 1000 elements. passed = ${sbt.contains(elements[5]) === true ? 'ok' : 'failed'}`);
+      console.log(`it should contains ${elements[20]} among 1000 elements. passed = ${sbt.contains(elements[20]) === true ? 'ok' : 'failed'}`);
+      console.log(`it should constains ${elements[100]} among 1000 elements. passed = ${sbt.contains(elements[100]) === true ? 'ok' : 'failed'}`);
+      console.log(`it should not contains ${200} among 1000 elements. passed = ${sbt.contains(200) === false ? 'ok' : 'failed'}`);
+    });
+
+    testList.push(() => {
+      let sbt = new SBT();
+      let elements = [];
+      for (let i = 0; i < 1000; i += 1) {
+        let cur = Math.round(Math.random() * 100);
+        elements.push(cur);
+      }
+      for (let item of elements) sbt.add(item, item);
+      elements.sort((l, r) => {
+        return l - r;
+      });
+      console.log(`it should contains ${5}th element. passed = ${sbt.select(5) === elements[5 - 1] ? 'ok' : 'failed'}`);
+      console.log(`it should contains ${20}th element. passed = ${sbt.select(20) === elements[20 - 1] ? 'ok' : 'failed'}`);
+      console.log(`it should contains ${25}th element. passed = ${sbt.select(25) === elements[25 - 1] ? 'ok' : 'failed'}`);
+    });
+    for(let curTest of testList)curTest();
+  };
+  $(document).ready(() => {
+    addTestSuit();
+  });
+</script>
 </body>
 </html>

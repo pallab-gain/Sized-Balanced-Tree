@@ -51,7 +51,7 @@ class SBT {
   }
 
   /**
-   * @private
+   * @public
    * @param {String|Number|null} key
    * @return {Node|Object|undefined} Returns true or false on whether the key is present in the tree
    */
