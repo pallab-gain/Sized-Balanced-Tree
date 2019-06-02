@@ -5,7 +5,8 @@
   "main": "./src/sbt/tree.js",
   "scripts": {
     "prod": "webpack --mode production --config webpack.prod.config.js",
-    "dev": "webpack-dev-server --mode development --config webpack.dev.config.js"
+    "dev": "webpack-dev-server --mode development --config webpack.dev.config.js",
+    "generate-doc": "jsdoc -R README.md -r src -d apidoc"
   },
   "repository": {
     "type": "git",

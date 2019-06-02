@@ -5,7 +5,7 @@ const {
 } = require('./utils');
 
 /**
- * @public
+ * @private
  * @param {Node|Undefined} pnode
  * @return {undefined|Node}
  */
@@ -22,7 +22,7 @@ const rotateLeft = (pnode = undefined) => {
 };
 
 /**
- * @public
+ * @private
  * @param {Node|Undefined} pnode
  * @return {undefined|Node}
  */

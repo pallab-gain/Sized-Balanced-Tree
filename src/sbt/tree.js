@@ -59,8 +59,8 @@ class SBT {
     return contains(this.root, key, this.comparator);
   }
   /**
-   * @public
    * 1 based indexing
+   * @public
    * @param {Number} at Query index
    * @return {undefined|Object} Return element at nth position
    */
@@ -82,7 +82,7 @@ class SBT {
   /**
    * @public
    * @param {String|Number|null} key
-   * @param {Node|Undefined} value
+   * @param {Object|Undefined} value
    */
   add (key = null, value = undefined) {
     this.root = add(this.root, key, value, this.comparator);
@@ -99,7 +99,7 @@ class SBT {
 
   /**
    * @public
-   * @return {Node|Object} Return first element in the sorted list
+   * @return {Node|Object} Return min element in the sorted list
    */
   getMin () {
     const firstNode = selectFirst(this.root);
@@ -108,7 +108,7 @@ class SBT {
 
   /**
    * @public
-   * @return {Node|Object} Return last element in the sorted list
+   * @return {Node|Object} Return max element in the sorted list
    */
   getMax () {
     const lastNode = selectLast(this.root);

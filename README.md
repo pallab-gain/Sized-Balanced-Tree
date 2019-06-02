@@ -17,17 +17,21 @@
 
 #### Install devependecies and build library
 
-1. Install dependencies
+- Install dependencies
 
-   `npm install`
+  `npm install`
 
-2. Run and test in devloper environment
+- Run and test in devloper environment
 
-   ``npm run dev`
+  `npm run dev`
 
-3. Build library and use in production
+- Build library and use in production
 
-   `npm run prod`
+  `npm run prod`
 
-   You will find the library in `dist` folder
+  You will find the library in `dist` folder
+
+- Update or generate api doc
+
+  `npm run generate-doc`
 
