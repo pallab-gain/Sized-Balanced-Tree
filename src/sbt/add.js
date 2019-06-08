@@ -21,7 +21,7 @@ const add = (tree = undefined, key = null, value = undefined, comparator = undef
     throw new Error(`comparator not defined`);
   }
   if (!tree) { return new Node({ key, value }); }
-  let cmp = comparator(key, tree.key);
+  const cmp = comparator(key, tree.key);
   tree.size = size(tree) + 1;
   if (cmp < 0) {
     tree.left = add(tree.left, key, value, comparator);

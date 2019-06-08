@@ -27,7 +27,7 @@
 
 - Build library and use in production
 
-  `npm run prod`
+  `npm run build-prod`
 
   You will find the library in `dist` folder
 
@@ -40,3 +40,4 @@
 #### API Doc
 
 https://wistful-polish.surge.sh/
+

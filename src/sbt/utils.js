@@ -3,7 +3,7 @@ const size = (tree = undefined) => {
   if (!tree) {
     return 0;
   }
-  return tree.size || 0;
+  return tree.size;
 };
 
 const height = (node = undefined) => {
