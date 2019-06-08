@@ -6,7 +6,8 @@
   "scripts": {
     "prod": "webpack --mode production --config webpack.prod.config.js",
     "dev": "webpack-dev-server --mode development --config webpack.dev.config.js",
-    "generate-doc": "jsdoc -R README.md -r src -d apidoc"
+    "generate-doc": "jsdoc -R README.md -r src -d apidoc",
+    "benchmark": "node benchmark/benchmark.js"
   },
   "repository": {
     "type": "git",
@@ -29,8 +30,11 @@
   "homepage": "https://github.com/pallab-gain/Sized-Balanced-Tree#readme",
   "devDependencies": {
     "@babel/core": "^7.4.5",
+    "avl": "^1.4.4",
     "babel-loader": "^8.0.6",
     "babel-polyfill": "^6.26.0",
+    "benchmark": "^2.1.4",
+    "bintrees": "^1.0.2",
     "chai": "^4.2.0",
     "clean-webpack-plugin": "^3.0.0",
     "eslint": "^5.16.0",
@@ -40,6 +44,8 @@
     "eslint-plugin-node": "^9.0.1",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
+    "functional-red-black-tree": "^1.0.1",
+    "google-closure-library": "^20190528.0.0",
     "html-webpack-plugin": "^3.2.0",
     "jsdoc": "^3.6.2",
     "mocha": "^6.1.4",
