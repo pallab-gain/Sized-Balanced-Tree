@@ -10,7 +10,8 @@
     "generate-doc": "jsdoc -R README.md -r src -d apidoc",
     "benchmark": "node benchmark/benchmark.js",
     "test": "mocha ./__test__/src/sbt/tree.test.js",
-    "benchmark-add": "0x -- node --prof benchmark/add.js"
+    "benchmark-add": "0x -- node --prof benchmark/add.js",
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
     "bintrees": "^1.0.2",
     "chai": "^4.2.0",
     "clean-webpack-plugin": "^3.0.0",
+    "coveralls": "^3.0.4",
     "eslint": "^5.16.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-loader": "^2.1.2",
