@@ -15,8 +15,8 @@
 
 
 #### Install package
-```
-    npm install sized-balanced-tree 
+```js
+npm install sized-balanced-tree 
 ```
 
 #### Install devependecies and build library
