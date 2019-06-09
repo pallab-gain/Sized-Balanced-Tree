@@ -1,5 +1,5 @@
 'use strict';
-const SBT = require('./../dist/sized-balanced-tree');
+const SBT = require('./../dist/sized-balanced-tree.min');
 
 let tree = new SBT();
 const N = 100000;

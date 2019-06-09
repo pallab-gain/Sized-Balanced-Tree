@@ -23,7 +23,11 @@
 
 - Run and test in devloper environment
 
-  `npm run dev`
+  `npm run run-dev`
+
+- Build non-minified version of the library
+
+  `npm run build-dev`
 
 - Build library and use in production
 
@@ -34,6 +38,14 @@
 - Update or generate api doc
 
   `npm run generate-doc`
+  
+- Do benchmark
+
+  `npm run benchmark`
+  
+- Run tests
+
+  `npm run test`
 
 
 
