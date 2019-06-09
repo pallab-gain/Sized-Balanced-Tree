@@ -14,6 +14,10 @@
 | Nth element  | O(log n)  | O(log n) |
 
 
+#### Install package
+```
+    npm install sized-balanced-tree 
+```
 
 #### Install devependecies and build library
 
