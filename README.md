@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/pallab-gain/Sized-Balanced-Tree.svg?branch=master)](https://travis-ci.org/pallab-gain/Sized-Balanced-Tree)
+
 ### Sized-Balanced-Tree
 
 ##### Sized Balanced Tree implementation in JavaScript  
