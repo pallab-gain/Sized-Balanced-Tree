@@ -1,6 +1,6 @@
 
 ### Sized-Balanced-Tree 
-[![Build Status](https://travis-ci.org/pallab-gain/Sized-Balanced-Tree.svg?branch=master)](https://travis-ci.org/pallab-gain/Sized-Balanced-Tree) [![Coverage Status](https://coveralls.io/repos/github/pallab-gain/Sized-Balanced-Tree/badge.svg)](https://coveralls.io/github/pallab-gain/Sized-Balanced-Tree)
+[![Build Status](https://travis-ci.org/pallab-gain/Sized-Balanced-Tree.svg?branch=master)](https://travis-ci.org/pallab-gain/Sized-Balanced-Tree) [![Coverage Status](https://coveralls.io/repos/github/pallab-gain/Sized-Balanced-Tree/badge.svg)](https://coveralls.io/github/pallab-gain/Sized-Balanced-Tree) [![npm version](https://badge.fury.io/js/sized-balanced-tree.svg)](https://badge.fury.io/js/sized-balanced-tree)
 
 
 
