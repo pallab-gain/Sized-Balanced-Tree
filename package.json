@@ -2,7 +2,7 @@
   "name": "sized-balanced-tree",
   "version": "1.0.2",
   "description": "Sized balanced tree implementation in javascript",
-  "main": "./dist/sized-balanced-tree.min.js",
+  "main": "./src/sbt/tree.js",
   "scripts": {
     "build-prod": "webpack --mode production --config webpack.prod.config.js",
     "build-dev": "webpack --mode development --config webpack.dev.config.js",
@@ -10,8 +10,7 @@
     "generate-doc": "jsdoc -R README.md -r src -d apidoc",
     "benchmark": "node benchmark/benchmark.js",
     "test": "mocha ./__test__/src/sbt/tree.test.js",
-    "benchmark-add": "0x -- node --prof benchmark/add.js",
-    "publish": "npm run build-prod && npm publish"
+    "benchmark-add": "0x -- node --prof benchmark/add.js"
   },
   "repository": {
     "type": "git",
