@@ -1,6 +1,6 @@
 {
   "name": "sized-balanced-tree",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Sized balanced tree implementation in javascript",
   "main": "./src/sbt/tree.js",
   "scripts": {
