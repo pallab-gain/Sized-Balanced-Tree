@@ -9,7 +9,7 @@
     "run-dev": "webpack-dev-server --mode development --config webpack.dev.config.js",
     "generate-doc": "jsdoc -R README.md -r src -d apidoc",
     "benchmark": "node benchmark/benchmark.js",
-    "test": "mocha ./__test__/src/sbt/tree.test.js",
+    "test": "mocha ./__test__/src/sbt/*.test.js",
     "benchmark-add": "0x -- node --prof benchmark/add.js",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
